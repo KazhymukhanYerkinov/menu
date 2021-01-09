@@ -87,7 +87,7 @@
 
 @media (max-width: 450px) {
     .cart__items {
-        height: 350px;
+        max-height: 320px;
     }
     .cart__title {
         font-size: 20px;
