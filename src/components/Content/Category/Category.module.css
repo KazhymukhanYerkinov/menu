@@ -1,0 +1,29 @@
+.item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 180px;
+    height: 55px;
+
+    cursor: pointer;
+
+    
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    background-color: white;
+
+    
+}
+.active {
+    background-color: #048654;
+    color: white;
+}
+
+@media (max-width: 500px) {
+    .item {
+        height: 45px;
+        font-size: 14px;
+        min-width: 150px;
+    }
+}

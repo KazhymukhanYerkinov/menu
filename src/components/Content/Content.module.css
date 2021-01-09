@@ -1,0 +1,26 @@
+.content__categories {
+    display: flex;
+    overflow-x: auto;
+    box-shadow: 0 4px 4px -2px gray;
+}
+.content__categories::-webkit-scrollbar {
+    display: none;
+    
+}
+.content__products {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    
+    padding: 0 15px;
+    padding-top: 10px;
+
+    background-color: #FBFEFD;
+    max-height: 79vh;
+    overflow-y: scroll;  
+}
+
+.content__products::-webkit-scrollbar {
+    width: 0;
+    display: none;
+}
