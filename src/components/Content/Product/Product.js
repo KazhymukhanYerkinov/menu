@@ -8,9 +8,7 @@ import { Link } from 'react-router-dom';
 const Product = ({ id,name, foods, rootName, onAddProduct, rootTable, BASE_URL }) => {
     return (
         <>  
-           
             <section className={cls.title} id = {`section_${id}`}> {foods.length !== 0 && name} </section>
-            
             {
                 foods.map((item, index) => {
                     return (
@@ -30,11 +28,6 @@ const Product = ({ id,name, foods, rootName, onAddProduct, rootTable, BASE_URL }
                     )
                 })
             }
-           
-            
-
-
-
         </>
     )
 }

@@ -31,8 +31,6 @@ const Detail = ({ data, match, BASE_URL, onAddProduct }) => {
             }  
         }
     }, [])
-
-    console.log(value)
     
     return (
         <div className = {cls.detail}>

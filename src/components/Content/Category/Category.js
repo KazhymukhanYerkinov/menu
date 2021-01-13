@@ -7,9 +7,6 @@ import classNames from 'classnames';
 
 
 const Categories = ({ activeCategory, name, id, onClickSetCategory }) => {
-
-    
-
     const links = document.querySelectorAll('.scroll__link');
     for (const link of links) {
         link.addEventListener("click", clickHandler);

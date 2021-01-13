@@ -4,7 +4,7 @@ import cls from './Header.module.css';
 import cart from '../../assets/images/cart.svg';
 import back from '../../assets/images/back.svg';
 import Cart from '../Cart/Cart';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 

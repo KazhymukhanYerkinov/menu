@@ -56,7 +56,6 @@ const OrderReduxForm = reduxForm({ form: 'order' })(OrderForm);
 const Order = ({ products, success, sum,rootName, rootTable, postOrderThunk, setSuccess }) => {
     const sale = 15;
     const obs = sum / 100 * sale;
-    console.log(products)
     const items = [];
 
     for (let i = 0; i < products.length; i++) {

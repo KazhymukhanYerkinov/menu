@@ -1,5 +1,4 @@
 import * as axios from 'axios';
-import Order from '../components/Order/Order';
 
 const instance = axios.create({
     baseURL: `https://qr-menu-api.herokuapp.com/`,

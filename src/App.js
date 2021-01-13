@@ -17,13 +17,10 @@ function App({ data, getDataProductsThunk, postOrderThunk, setSuccess, success, 
   const rootTable = match.params.tableID;
   const BASE_URL = 'https://qr-menu-api.herokuapp.com';
 
-  console.log(rootTable);
-  console.log(rootName);
   
 
   React.useEffect(() => {
     getDataProductsThunk(rootName)
-    console.log('sad')
   },[])
 
   if (data === null) {
