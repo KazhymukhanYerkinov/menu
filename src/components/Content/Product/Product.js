@@ -5,21 +5,37 @@ import cart2 from '../../../assets/images/cart2.svg';
 import { Link } from 'react-router-dom';
 
 
-const Product = ({ id, imge, name, desc, price }) => {
+const Product = ({ id,name, foods, rootName, onAddProduct, rootTable, BASE_URL }) => {
     return (
-        <div className = { cls.product }>
-            <div className = { cls.product__inner }>
-                <Link to = {'/product/1'}>
-                    <img src = { imge } alt = "Product photos" className = {cls.product__image}/>
-                    <div className = {cls.product__name}> { name } </div>
-                    <div className = {cls.product__desc}> { desc } </div>
-                    <div className = {cls.product__price}> { price } KZT</div>
-                </Link>
-                <div className = {cls.product__add}>
-                    <img src = { cart2 } alt = "Cart"/>
-                </div>
-            </div>
-        </div>
+        <>  
+           
+            <section className={cls.title} id = {`section_${id}`}> {foods.length !== 0 && name} </section>
+            
+            {
+                foods.map((item, index) => {
+                    return (
+                        <div className={cls.product} key = { index }>
+                            <div className={cls.product__inner}>
+                                <Link to={`/${rootName}/${rootTable}/product/${item.id}`}>
+                                    <img src={ `${BASE_URL}${item.image}` } alt="Product photos" className={cls.product__image} />
+                                    <div className={cls.product__name}> { item.name } </div>
+                                    <div className={cls.product__price}> {item.price} KZT</div>
+                                </Link>
+                                <div className={cls.product__add} onClick = {() => onAddProduct(item) }>
+                                    <img src={cart2} alt="Cart" />
+                                </div>
+                            </div>
+                        </div>
+                        
+                    )
+                })
+            }
+           
+            
+
+
+
+        </>
     )
 }
 

@@ -18,12 +18,23 @@
     color: #2D2942;
     
 }
-.detail__price {
+.discount {
     margin: 30px 0;
+
+    display: flex;
+    align-items: center;
+}
+.detail__price {
     font-size: 20px;
     font-weight: 500;
 
     color: #707070;
+}
+.detail__discount {
+    font-size: 15px;
+    margin-left: 12px;
+    text-decoration: line-through;
+    color: #333333;
 }
 .quantity {
     display: flex;
@@ -58,6 +69,7 @@
    background-color: white;
 
 }
+
 .quantity__plus {
     display: block;
     height: 45px;
@@ -128,14 +140,14 @@
 }
 
 @media (max-width: 400px) {
-    .detail__price {
+    .discount {
         margin: 20px 0;
     }
     .quantity {
         flex-wrap: wrap;
     }
     .quantity__input {
-        margin-left: 0;
+        margin-left: 10px;
         margin-top: 10px;
     }
 }

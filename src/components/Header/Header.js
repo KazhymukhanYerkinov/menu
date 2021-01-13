@@ -8,9 +8,8 @@ import { Link, Route } from 'react-router-dom';
 
 
 
-const Header = () => {
-
-    const [ showCart, setShowCart ] = React.useState(false);
+const Header = ({ name, products, rootName, rootTable, sum, onRemoveProduct, onAddProduct }) => {
+    const [showCart, setShowCart] = React.useState(false);
 
     const onShowCart = () => {
         setShowCart(true);
@@ -19,45 +18,34 @@ const Header = () => {
         setShowCart(false);
     }
     return (
-        <div className = {cls.header}>
-            <div className = 'container'>
-                <div className = {cls.header__inner}>
+        <div className={cls.header}>
+            <div className='container'>
+                <div className={cls.header__inner}>
 
-                    <Route exact path = {'/'}>
-                        <div className = {cls.header__back}></div>
-                    </Route>
+                    <Link to={`/${rootName}/${rootTable}`}>
+                        <div className={cls.header__back}>
+                            <img src={back} alt="back button" />
+                        </div>
+                    </Link>
+                    
+                    <Link to = {`/${rootName}/${rootTable}`}>
+                        <div className={cls.header__name}>
+                            {name}
+                        </div>
+                    </Link>
+                    <div className={cls.header__cart} onClick={onShowCart}>
 
-                    <Route exact path = {'/product/:productID'}>
-                        <Link to = "/">
-                            <div className = {cls.header__back}>
-                                <img src = { back } alt = "back button"/>
-                            </div>
-                        </Link>
-                    </Route>
-
-                    <Route exact path = {'/order'}>
-                        <Link to = "/">
-                            <div className = {cls.header__back}>
-                                <img src = { back } alt = "back button"/>
-                            </div>
-                        </Link>
-                    </Route>
-
-
-                    <div className = {cls.header__name}>
-                        Rich Villa
-                    </div>
-                    <div className = {cls.header__cart} onClick = { onShowCart }>
-                        
-                        <img src = { cart } alt = "cart button"/>
-                        <div className = {cls.cart__count}>
-                            <div> 0 </div>
+                        <img src={cart} alt="cart button" />
+                        <div className={cls.cart__count}>
+                            <div> {products.length ? products.length : 0} </div>
                         </div>
 
                     </div>
                 </div>
             </div>
-            {showCart && <Cart onHideCart = { onHideCart }/>}
+            {showCart && <Cart onHideCart={onHideCart} 
+                               products = { products } rootName = { rootName } sum = { sum } rootTable = { rootTable }
+                               onAddProduct = { onAddProduct } onRemoveProduct = { onRemoveProduct }/>}
         </div>
     )
 }

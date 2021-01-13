@@ -1,70 +1,89 @@
 import React from 'react';
-
+import { Field, reduxForm } from 'redux-form';
+import {withRouter} from 'react-router-dom';
+import { required, requiredPhone } from '../../utils/validators';
+import { Input, TextArea } from '../common/FormControl/FormControl';
 import Success from '../Success/Success';
 
 import cls from './Order.module.css';
 
 
-const Order = () => {
 
-    const [ showSuccess, setShowSuccess ] = React.useState(false);
+const OrderForm = ({ sum, obs, handleSubmit }) => {
+    return (
+        <form className={cls.order__form} onSubmit = { handleSubmit }>
+            <div className={cls.order__input}>
+                <label className={cls.label}> Имя </label>
+                <Field  name = {'name'} component = { Input } placeholder = {'Имя'} type = {'text'} validate = { required } />
+            </div>
 
-    const onShowSuccess = () => {
-        setShowSuccess(true)
+            <div className={cls.order__phone}>
+                <label className={cls.label}> Номер телефона </label>
+                <Field name = {'phone'} component = { Input } type='tel' placeholder='Номер телефона' validate = { [required, requiredPhone] } />
+            </div>
+
+            <div className={cls.order__comment}>
+                <label className={cls.label}> Коментарий к заказу <span className = {cls.subcom}> (*не обязательно) </span></label>
+                <Field name = {'comment'} component = { TextArea } type = { 'text' } placeholder = {'Коментарий к заказу'}/>
+            </div>
+
+            <div className={cls.order__subtotal}>
+                <div className={cls.order__row}>
+                    <div className={cls.order__desc}> Промежуточный итог </div>
+                    <div className={cls.order__price}> {sum} KZT </div>
+                </div>
+
+                <div className={cls.order__row}>
+                    <div className={cls.order__desc}> Oбслуживание </div>
+                    <div className={cls.order__price}> {obs} KZT </div>
+                </div>
+            </div>
+
+            <div className={cls.order__total}>
+                <div className={cls.order__row}>
+                    <div className={cls.order__desc}> Всего </div>
+                    <div className={cls.order__price}> {sum + obs} KZT </div>
+                </div>
+            </div>
+
+            <button className={cls.order__button}> Отправить </button>
+        </form>
+    )
+}
+
+const OrderReduxForm = reduxForm({ form: 'order' })(OrderForm);
+
+const Order = ({ products, success, sum,rootName, rootTable, postOrderThunk, setSuccess }) => {
+    const sale = 15;
+    const obs = sum / 100 * sale;
+    console.log(products)
+    const items = [];
+
+    for (let i = 0; i < products.length; i++) {
+        const body = {food: products[i][0].id, count: products[i][1]};
+        items.push(body)  
     }
-    const onHideSuccess = () => {
-        setShowSuccess(false)
+
+
+    const onSubmit = (formData) => {
+        postOrderThunk(formData.name, formData.phone, rootTable, formData.comment, items);
     }
 
     return (
-        <div className = {cls.order}>
-            <div className = 'container'>
-                <div className = {cls.order__inner}>
+        <div className={cls.order}>
+            <div className='container'>
+                <div className={cls.order__inner}>
 
-                    <form className = {cls.order__form}>
-                        <div className = {cls.order__input}>
-                            <label className = {cls.label}> Имя </label>
-                            <input className = {cls.input} type = 'text' placeholder = 'Имя'/>
-                        </div>
+                    <OrderReduxForm  
+                        onSubmit = { onSubmit }
+                        sum = { sum }
+                        obs = { obs }/>
 
-                        <div className = {cls.order__phone}>
-                            <label className = {cls.label}> Номер телефона </label>
-                            <input className = {cls.input} type = 'text' placeholder = 'Номер телефона'/>
-                        </div>
-
-                        <div className = {cls.order__comment}>
-                            <label className = {cls.label}> Коментарий к заказу </label>
-                            <textarea className = {cls.textarea} type = 'text' placeholder = 'Коментарий к заказу'></textarea>
-                        </div>
-                    </form>
-
-                    <div className = {cls.order__result}>
-                        <div className = {cls.order__subtotal}>
-                            <div className = {cls.order__row}>
-                                <div className = {cls.order__desc}> Промежуточный итог </div>
-                                <div className = {cls.order__price}> 11200 KZT </div>
-                            </div>
-
-                            <div className = {cls.order__row}>
-                                <div className = {cls.order__desc}> Oбслуживание </div>
-                                <div className = {cls.order__price}> 778 KZT </div>
-                            </div>
-                        </div>
-
-                        <div className = {cls.order__total}>
-                            <div className = {cls.order__row}>
-                                <div className = {cls.order__desc}> Всего </div>
-                                <div className = {cls.order__price}> 11978 KZT </div>
-                            </div>
-                        </div>
-
-                        <button className = {cls.order__button} onClick = { onShowSuccess }> Отправить </button>
-                    </div>
                 </div>
             </div>
-            {showSuccess &&  <Success onHideSuccess = { onHideSuccess }/>}
+            {success && <Success rootName = { rootName } rootTable = { rootTable } setSuccess = { setSuccess } />}
         </div>
     )
 }
 
-export default Order;
+export default withRouter(Order);
