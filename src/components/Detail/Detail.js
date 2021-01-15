@@ -38,7 +38,9 @@ const Detail = ({ data, match, BASE_URL, onAddProduct }) => {
         <div className = {cls.detail}>
             <div className = 'container'>
                 <div className = {cls.detail__inner}>
-                    <img src = { !value.image ? noimage:BASE_URL + '' + value.image } alt = "" className = {cls.detail__image}/>
+                    { !value.image ? 
+                        <img src = { noimage } alt = "" className = {cls.detail__image}/>:
+                        <img src = { BASE_URL + '' + value.image } alt = "" className = {cls.detail__image}/>}
                     <div className = { cls.detail__name }> { value.name } </div>
                     <div className = {cls.discount}>
                         <div className = { cls.detail__price }> {value.is_discounted ? value.total_price: value.price } KZT </div>

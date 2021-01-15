@@ -4,6 +4,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import {withRouter, Route} from 'react-router-dom';
 
+import loader from './assets/images/loader.svg';
 import { Content, Header, Detail, Order } from './components';
 import { getDataProductsThunk, postOrderThunk,setSuccess } from './redux/data-reducer';
 
@@ -24,7 +25,9 @@ function App({ data, getDataProductsThunk, postOrderThunk, setSuccess, success, 
   },[])
 
   if (data === null) {
-    return <div></div>
+    return <div className = 'loader__block'> 
+      <img className = 'loader' src = { loader } alt = "" />
+    </div>
   }
 
   const onClearProduct = () => {
