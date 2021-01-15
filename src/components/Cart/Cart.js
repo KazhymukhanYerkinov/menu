@@ -62,7 +62,7 @@ const Cart = ({ products, onHideCart, rootName,rootTable, sum, onRemoveProduct, 
                         </div>
 
                         {products.length > 0 ? <Link to = {`/${rootName}/${rootTable}/order`} className = {cls.cart__button} onClick = { onHideCart }> Oтправить заказ </Link>:
-                        <Link to = {`/${rootName}`} className = {cls.cart__button} onClick = { onHideCart }> Вернуться назад </Link>}
+                        <Link to = {`/${rootName}/${rootTable}`} className = {cls.cart__button} onClick = { onHideCart }> Вернуться назад </Link>}
                     </div>
                </div>
             </div>

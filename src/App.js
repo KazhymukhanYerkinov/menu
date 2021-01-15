@@ -7,7 +7,7 @@ import {withRouter, Route} from 'react-router-dom';
 import { Content, Header, Detail, Order } from './components';
 import { getDataProductsThunk, postOrderThunk,setSuccess } from './redux/data-reducer';
 
-const map = new Map();
+let map = new Map();
 let sum = 0;
 
 function App({ data, getDataProductsThunk, postOrderThunk, setSuccess, success, match}) {
@@ -27,9 +27,14 @@ function App({ data, getDataProductsThunk, postOrderThunk, setSuccess, success, 
     return <div></div>
   }
 
+  const onClearProduct = () => {
+    map = new Map();
+    setProducts([]);
+  }
+
   const onRemoveProduct = (object, count) => {
     if (count === 1) {
-      if (window.confirm('Do you really want to leave?')) {
+      if (window.confirm('вы действительно хотите удалить ' + object.name + ' ?')) {
         map.delete(object);
         sum -= object.price
         setProducts(Array.from(map))
@@ -75,7 +80,7 @@ function App({ data, getDataProductsThunk, postOrderThunk, setSuccess, success, 
       <Header name = { data.cafe.name } products = { products } rootName = { rootName } rootTable = { rootTable } sum = { sum } onRemoveProduct = { onRemoveProduct } onAddProduct = { onAddProduct }/>
       <Route exact path = {`/${rootName}/${rootTable}`} render = {() => <Content data = { data } rootName = { rootName } BASE_URL = { BASE_URL } rootTable = { rootTable } onAddProduct = { onAddProduct } />}/>
       <Route exact path = {`/${rootName}/${rootTable}/product/:productID`} render = {() => <Detail data = { data.cafe } BASE_URL = { BASE_URL } onAddProduct = { onAddProduct }/> }/>
-      <Route exact path = {`/${rootName}/${rootTable}/order`} render = {() => <Order products = { products } success = { success } sum = { sum } rootName = { rootName } rootTable = { rootTable } postOrderThunk = { postOrderThunk } setSuccess = { setSuccess }/>}/>
+      <Route exact path = {`/${rootName}/${rootTable}/order`} render = {() => <Order products = { products } success = { success } sum = { sum } rootName = { rootName } rootTable = { rootTable } postOrderThunk = { postOrderThunk } setSuccess = { setSuccess } onClearProduct = { onClearProduct }/>}/>
     </div>
   );
 }

@@ -16,7 +16,7 @@
     font-size: 16px;
     background-color: white;
 
-    
+    transition:  background-color .2s linear;
 }
 .active {
     background-color: #048654;

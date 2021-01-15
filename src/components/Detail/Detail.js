@@ -2,6 +2,7 @@ import React from 'react';
 
 import minus from '../../assets/images/minus.svg';
 import plus from '../../assets/images/plus.svg';
+import noimage from '../../assets/images/no.png';
 
 import cls from './Detail.module.css';
 import { withRouter } from 'react-router-dom';
@@ -31,12 +32,13 @@ const Detail = ({ data, match, BASE_URL, onAddProduct }) => {
             }  
         }
     }, [])
+
     
     return (
         <div className = {cls.detail}>
             <div className = 'container'>
                 <div className = {cls.detail__inner}>
-                    <img src = { BASE_URL + '' + value.image } alt = "" className = {cls.detail__image}/>
+                    <img src = { !value.image ? noimage:BASE_URL + '' + value.image } alt = "" className = {cls.detail__image}/>
                     <div className = { cls.detail__name }> { value.name } </div>
                     <div className = {cls.discount}>
                         <div className = { cls.detail__price }> {value.is_discounted ? value.total_price: value.price } KZT </div>

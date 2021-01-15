@@ -53,7 +53,7 @@ const OrderForm = ({ sum, obs, handleSubmit }) => {
 
 const OrderReduxForm = reduxForm({ form: 'order' })(OrderForm);
 
-const Order = ({ products, success, sum,rootName, rootTable, postOrderThunk, setSuccess }) => {
+const Order = ({ products, success, sum,rootName, rootTable, postOrderThunk, setSuccess, onClearProduct }) => {
     const sale = 15;
     const obs = sum / 100 * sale;
     const items = [];
@@ -66,6 +66,7 @@ const Order = ({ products, success, sum,rootName, rootTable, postOrderThunk, set
 
     const onSubmit = (formData) => {
         postOrderThunk(formData.name, formData.phone, rootTable, formData.comment, items);
+        onClearProduct();
     }
 
     return (

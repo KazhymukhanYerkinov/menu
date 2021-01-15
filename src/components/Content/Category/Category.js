@@ -6,24 +6,13 @@ import classNames from 'classnames';
 
 
 
-const Categories = ({ activeCategory, name, id, onClickSetCategory }) => {
-    const links = document.querySelectorAll('.scroll__link');
-    for (const link of links) {
-        link.addEventListener("click", clickHandler);
-    }
 
-    function clickHandler(e) {
-        e.preventDefault();
-        const href = this.getAttribute("href");
-      
-        document.querySelector(href).scrollIntoView({
-          behavior: "smooth"
-        });
-    }
+const Categories = ({ activeCategory, name, id, onClickSetCategory, handleClick}) => {
+    
     
 
     return (
-            <a href = {`#section_${id}`} className = 'scroll__link'>
+            <div onClick = {() => handleClick(id)}>
                 <div
                     className={classNames(cls.item,
                     {[cls.active]: activeCategory === id})} 
@@ -31,8 +20,7 @@ const Categories = ({ activeCategory, name, id, onClickSetCategory }) => {
                     >
                     { name }
                 </div>
-            </a>
-           
+            </div> 
     )
 }
 
