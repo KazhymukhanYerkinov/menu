@@ -15,6 +15,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: white;
 
     
 
@@ -31,16 +32,32 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 22px;
-    color: #2D2942;
+    color: #2C2C2C;
+
+    text-transform: uppercase;
 }
 
 .header__cart {
-    position: relative;
+    display: flex;
+    align-items: center;
     cursor: pointer;
+
+    padding: 5px 25px;
+    border-radius: 30px;
+    margin-left: -25px;
+
+    background-color: #FE5F1E;
+
+    transition: background-color .2s linear;
+}
+.header__cart:active {
+    background-color: #b13b0c;
 }
 .header__cart img {
-    width: 45px;
-    margin-right: 7px;
+    width: 40px;
+    padding-right: 10px;
+    border-right: 1px solid white;
+
     
     
 }
@@ -48,16 +65,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 700;
+    padding-left: 10px;
+    
 
-    position: absolute;
-    top: -7px;
-    right: 2px;
-
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
+    
     color: white;
-    background-color: #DC3545;
+    
 }
 @media (max-width: 800px) {
     .header {

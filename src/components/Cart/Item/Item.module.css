@@ -12,7 +12,7 @@
     font-size: 15px;
     font-weight: 600;
 
-    color: #2D2942;
+    color: #2C2C2C;
 }
 .item__price {
     font-size: 14px;
@@ -21,22 +21,32 @@
 .item__quantity {
     display: flex;
 }
-.item__minus {
-    background-color: #DC3545;
-    padding: 9px;
+.minus, .plus  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
+    background-color: #FE5F1E;
     cursor: pointer;
 
-}
-.item__plus {
-    background-color: #2D2942;
-    padding: 9px;
-    border-radius: 50%;
-    cursor: pointer;
-
-    margin-left: 10px;
+    transition: background-color .2s linear;
     
 }
+.minus {   
+    background-color: white;
+    border: 3px solid #FE5F1E;
+    margin-right: 10px;
+}
+.minus:active {
+    background-color:#FE5F1E;
+    
+}
+.plus:active {
+    background-color:#b13b0c;
+}
+
 @media (max-width: 450px) {
     .item__name {
         font-size: 14px;

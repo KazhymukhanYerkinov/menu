@@ -1,14 +1,15 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-import minus from '../../assets/images/minus.svg';
-import plus from '../../assets/images/plus.svg';
 import noimage from '../../assets/images/no.png';
 
 import cls from './Detail.module.css';
-import { withRouter } from 'react-router-dom';
+
 
 
 const Detail = ({ data, match, BASE_URL, onAddProduct }) => {
+
+    
 
     const [ count, setCount ] = React.useState(1);
     const [ value, setValue ] = React.useState({});
@@ -50,9 +51,18 @@ const Detail = ({ data, match, BASE_URL, onAddProduct }) => {
                         <div className = {cls.quantity__text}> Количество: </div>   
 
                         <div className = {cls.quantity__input}>
-                            <img className = {cls.quantity__minus} src = { minus } alt = "" onClick = { onMinus }/>
+                            
+                            
+                            <div className = {cls.minus} onClick = { onMinus }>
+                                <span className = 'span__minus'></span>
+                            </div>
+
                             <div className = {cls.quantity__count}> { count } </div>
-                            <img className = {cls.quantity__plus} src = { plus } alt = ""  onClick = { onPlus }/>
+
+                            <div className = {cls.plus} onClick = { onPlus }>
+                                <span className = 'span__plus' ></span>
+                            </div>
+                            
                         </div>
                     </div>
 

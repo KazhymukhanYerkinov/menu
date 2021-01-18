@@ -9,7 +9,7 @@ const list = [];
 
 const Content = ({ data, rootName, rootTable, onAddProduct, BASE_URL }) => {
 
-
+    console.log("RENDER CONTENT")
     const [ activeCategory, setActiveCategory ] = React.useState(0);
 
     for (let i = 0; i < data.cafe.categories.length; i++) {

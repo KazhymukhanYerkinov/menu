@@ -19,13 +19,13 @@
     font-weight: 600;
     margin-bottom: 10px;
 
-    color: #2D2942;
+    color: #2C2C2C;
 }
 
 
 
 .order__subtotal {
-    border-top: 1px solid black;
+    border-top: 1px solid #2C2C2C;
     padding-top: 10px;
 }
 .order__row {
@@ -39,12 +39,12 @@
     font-size: 16px;
     line-height: 21px;
     font-weight: 600;
-    color: #2D2942;
+    color: #2C2C2C;
 }
 .order__price {
     font-size: 16px;
     font-weight: 500;
-    color: #2D2942;
+    color: #2C2C2C;
 }
 
 .order__total {
@@ -61,7 +61,7 @@
     font-size: 16px;
     color: white;
 
-    background-color: #2D2942;
+    background-color: #282828;
 
     transition: background-color .2s linear;
 }
@@ -70,7 +70,7 @@
     background-color: #1b1829;
 }
 .order__button:active {
-    background-color: #12101b;
+    background-color: #000000;
 }
 .subcom {
     font-size: 14px;

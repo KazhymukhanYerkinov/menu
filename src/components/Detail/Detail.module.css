@@ -2,6 +2,7 @@
 
 .detail__inner {
     padding-top: 100px;
+    padding-bottom: 70px;
 }
 .detail__image {
     display: block;
@@ -15,7 +16,7 @@
     font-size: 24px;
     font-weight: 700;
 
-    color: #2D2942;
+    color:#2C2C2C;
     
 }
 .discount {
@@ -49,20 +50,32 @@
 .quantity__input {
     display: flex;
     align-items: center;
+    cursor: pointer;
     height: 45px;
     margin-left: 20px;;
-    background-color: #707070;
+    background-color: #2C2C2C;
 }
-.quantity__minus {
-    display: block;
-    height: 45px;
-    width: 70px;
-    margin: 0 auto;
+.minus, .plus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 65px;
+    height: 100%;
+
+    background-color: #2C2C2C;
+    transition: background-color .2s linear;
+}
+.minus:active, .plus:active {
+    background-color: #000000;
 }
 .quantity__count {
    
    width: 70px;
    text-align: center;
+   font-weight: 700;
+
+   color: #2C2C2C;
 
    font-size: 22px;
    line-height: 40px;
@@ -70,27 +83,32 @@
 
 }
 
-.quantity__plus {
-    display: block;
-    height: 45px;
-    width: 70px;
-    margin: 0 auto;
-}
+
 .detail__button {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 
     margin-top: 30px;
+    font-weight: 600;
 
     width: 300px;
     height: 45px;
-    background-color: #048654;
+    background-color:#FE5F1E;
     color: white;
     font-size: 17px;
 
     border-radius: 5px;
     text-transform: uppercase;
+
+    transition: background-color .2s linear;
+}
+.detail__button:hover {
+    background-color: #ee561a;
+}
+.detail__button:active {
+    background-color: #b13b0c;
 }
 .detail__desc {
     margin-top: 30px;
@@ -99,9 +117,9 @@
     display: inline-block;
     font-size: 20px;
     font-weight: 700;
-    color: #2D2942;
+    color: #2C2C2C;
     padding-bottom: 5px;
-    border-bottom: 2px solid #2D2942;
+    border-bottom: 2px solid#2C2C2C;
 }
 .desc__text {
     font-size: 16px;

@@ -4,11 +4,12 @@ import cls from './Header.module.css';
 import cart from '../../assets/images/cart.svg';
 import back from '../../assets/images/back.svg';
 import Cart from '../Cart/Cart';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 
 
-const Header = ({ name, products, rootName, rootTable, sum, onRemoveProduct, onAddProduct }) => {
+const Header = ({ name, products, rootName, del, rootTable, sum, onRemoveProduct, onAddProduct, onDeleteLast }) => {
+    const history = useHistory();
     const [showCart, setShowCart] = React.useState(false);
 
     const onShowCart = () => {
@@ -22,11 +23,11 @@ const Header = ({ name, products, rootName, rootTable, sum, onRemoveProduct, onA
             <div className='container'>
                 <div className={cls.header__inner}>
 
-                    <Link to={`/${rootName}/${rootTable}`}>
-                        <div className={cls.header__back}>
-                            <img src={back} alt="back button" />
-                        </div>
-                    </Link>
+                    
+                    <div className={cls.header__back} onClick = {() => history.goBack()}>
+                        <img src={back} alt="back button" />
+                    </div>
+                    
                     
                     <Link to = {`/${rootName}/${rootTable}`}>
                         <div className={cls.header__name}>
@@ -43,7 +44,7 @@ const Header = ({ name, products, rootName, rootTable, sum, onRemoveProduct, onA
                     </div>
                 </div>
             </div>
-            {showCart && <Cart onHideCart={onHideCart} 
+            {showCart && <Cart onHideCart={onHideCart} onDeleteLast = { onDeleteLast }
                                products = { products } rootName = { rootName } sum = { sum } rootTable = { rootTable }
                                onAddProduct = { onAddProduct } onRemoveProduct = { onRemoveProduct }/>}
         </div>

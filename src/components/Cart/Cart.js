@@ -3,15 +3,21 @@ import { Link } from 'react-router-dom';
 
 
 import close from '../../assets/images/close.svg'
-import cart from '../../assets/images/cart.jpg'
 
 import cls from './Cart.module.css';
 import Item from './Item/Item';
+import Delete from './Delete/Delete';
 
 
-const Cart = ({ products, onHideCart, rootName,rootTable, sum, onRemoveProduct, onAddProduct }) => {
+const Cart = ({ products, onHideCart, rootName,rootTable, sum, onRemoveProduct, onAddProduct, onDeleteLast }) => {
     const sale = 15;
     const obs = sum /100 * sale;
+    const [ lastItem, setLastItem ] = React.useState(null);
+
+    const onRemoveLast = (object) => {
+        setLastItem(object);
+    }
+    
     
     return (
         <div className = {cls.cart}>
@@ -30,13 +36,13 @@ const Cart = ({ products, onHideCart, rootName,rootTable, sum, onRemoveProduct, 
                                     rootName = { rootName } 
                                     onHideCart = { onHideCart }
                                     onRemoveProduct = { onRemoveProduct }
+                                    onRemoveLast = { onRemoveLast }
                                     onAddProduct = { onAddProduct }
                                     />
                             )
                         })}
                     </div>: 
                     <div className = {cls.cart__image}>
-                        <img src = { cart } alt = "" />
                         <div className = {cls.empty__cart}> Корзина пустая  </div>
                         <div className = {cls.empty__text}> Для того, чтобы заказать еду, перейди на главную страницу. </div>
                     </div>
@@ -62,10 +68,11 @@ const Cart = ({ products, onHideCart, rootName,rootTable, sum, onRemoveProduct, 
                         </div>
 
                         {products.length > 0 ? <Link to = {`/${rootName}/${rootTable}/order`} className = {cls.cart__button} onClick = { onHideCart }> Oтправить заказ </Link>:
-                        <Link to = {`/${rootName}/${rootTable}`} className = {cls.cart__button} onClick = { onHideCart }> Вернуться назад </Link>}
+                        <div className = {cls.cart__button} onClick = { onHideCart }> Вернуться назад </div>}
                     </div>
                </div>
             </div>
+           {lastItem !== null && <Delete lastItem = { lastItem } setLastItem = { setLastItem } onDeleteLast = { onDeleteLast }/>}
         </div>
     )
 }

@@ -1,13 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import minus from '../../../assets/images/minus.svg';
-import plus from '../../../assets/images/plus.svg';
-
 import cls from './Item.module.css';
 
 
-const Item = ({ item, rootName, onHideCart, onRemoveProduct, onAddProduct }) => {
+const Item = ({ item, rootName, onHideCart, onRemoveProduct, onAddProduct,onRemoveLast }) => {
+    
+    const onRemove = () => {
+        if (item[1] === 1) {
+            onRemoveLast(item[0]);
+        }
+        else {
+            onRemoveProduct(item[0], item[1]);
+        }
+    }
 
     return (
         <div className = {cls.item}>
@@ -20,12 +26,17 @@ const Item = ({ item, rootName, onHideCart, onRemoveProduct, onAddProduct }) => 
                 </Link>
 
                 <div className = {cls.item__quantity}>
-                    <img className = {cls.item__minus} src = { minus } alt = "" onClick = {() => onRemoveProduct(item[0], item[1]) }/>
-                    <img className = {cls.item__plus} src = { plus } alt = "" onClick = {() => onAddProduct(item[0])}/>
+                    <div className = {cls.minus} onClick = { onRemove }>
+                        <span className = 'span__minus cart__minus'></span>
+                    </div>
+                    <div className = {cls.plus} onClick = {() => onAddProduct(item[0])}>
+                        <span className = 'span__plus'></span>
+                    </div>
                 </div>
             </div>
         </div>
     )
 }
+
 
 export default Item;

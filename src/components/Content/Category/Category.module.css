@@ -4,22 +4,25 @@
     align-items: center;
     min-width: 180px;
     height: 55px;
+    margin-right: 10px;
 
-    border: 0.5px solid #048654;
+
+    border-radius: 30px;
 
     cursor: pointer;
-    color: #2D2942;
+    color: #2C2C2C;
 
     
 
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
-    background-color: white;
+    font-weight: 700;
+    background-color: #F9F9F9;
 
     transition:  background-color .2s linear;
 }
 .active {
-    background-color: #048654;
+    background-color: #282828;
     color: white;
 }
 

@@ -7,24 +7,29 @@
 .content__categories {
     display: flex;
     overflow-x: auto;
-    box-shadow: 0 4px 4px -2px gray;
-    background-color: white;
+    
+    
 
     position: fixed;
     width: 100%;
     max-width: 780px;
+    padding: 10px 0;
+    
     z-index: 10;
 
-    margin-top: 65px;
+    margin-top: 64px;
+    background-color: white;
+    border-bottom: 1px solid #2c2c2c;
+
 }
 
 .content__products {
     
     display: flex;
     flex-wrap: wrap;
-    padding-bottom: 400px;
+    padding-bottom: 250px;
 
-    background-color: #FBFEFD;  
+   
     
 }
 
@@ -45,7 +50,7 @@
     font-weight: 600;
     padding: 30px 0;
 
-    color: #2D2942;
+    color:#2C2C2C;
     
 } 
 

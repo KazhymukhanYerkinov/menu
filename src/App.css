@@ -15,17 +15,12 @@ img {vertical-align: top;}
 h1, h2, h3, h4, h5, h6 {font-size: inherit;font-weight: inherit;}
 body {font-family: 'Montserrat', sans-serif;}
 
-body {
-  background-color:  #FBFEFD;
-}
+
 .container {
   width: 100%;
   max-width: 800px;
   padding: 0 10px;
   margin: 0 auto;
-
-
-  background-color:  #FBFEFD;
 }
 
 .loader__block {
@@ -37,5 +32,41 @@ body {
   align-items: center;
 }
 .loader {
-  width: 30%;
+  width: 10%;
+}
+.span__minus {
+  display: block;
+  width: 20px;
+  height: 2.5px;
+
+  cursor: pointer;
+  background-color: white;
+}
+.cart__minus {
+  background-color: #FE5F1E;
+}
+.span__plus {
+  display: block;
+  width: 20px;
+  height: 2.5px;
+
+  position: relative;
+  cursor: pointer;
+  background-color: white;
+
+}
+.span__plus::after {
+  content: "";
+  width: 100%;
+  height: 2.5px;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: rotate(-90deg);
+
+  background-color: white;
+
 }

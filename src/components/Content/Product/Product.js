@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 const Product = ({ foods, rootName, onAddProduct, rootTable, BASE_URL }) => {
     
-
+    console.log("RENDER PRODUCT")
 
     return (
         <div className = {cls.base__block}>  
@@ -24,7 +24,8 @@ const Product = ({ foods, rootName, onAddProduct, rootTable, BASE_URL }) => {
                                     <div className={cls.product__price}> {item.price} KZT</div>
                                 </Link>
                                 <div className={cls.product__add} onClick = {() => onAddProduct(item) }>
-                                    <img src={cart2} alt="Cart" />
+                                    {/* <img src={cart2} alt="Cart" /> */}
+                                    <span className = 'span__plus'></span>
                                 </div>
                             </div>
                         </div>

@@ -14,14 +14,17 @@ let sum = 0;
 function App({ data, getDataProductsThunk, postOrderThunk, setSuccess, success, match}) {
 
   const [ products, setProducts ] = React.useState([]);
+  const [ del, setDel ] = React.useState(null);
+
   const rootName = match.params.root;
   const rootTable = match.params.tableID;
   const BASE_URL = 'https://qr-menu-api.herokuapp.com';
 
-  
+  console.log("RENDER APP")
 
   React.useEffect(() => {
     getDataProductsThunk(rootName)
+    console.log("RENDER AXIOS")
   },[])
 
   if (data === null) {
@@ -33,6 +36,13 @@ function App({ data, getDataProductsThunk, postOrderThunk, setSuccess, success, 
   const onClearProduct = () => {
     map = new Map();
     setProducts([]);
+  }
+
+  const onDeleteLast = (object) => {
+    map.delete(object);
+    sum -= object.price;
+
+    setProducts(Array.from(map))
   }
 
   const onRemoveProduct = (object, count) => {
@@ -55,13 +65,7 @@ function App({ data, getDataProductsThunk, postOrderThunk, setSuccess, success, 
   }
 
   const onAddProduct = (object, c = 1) => {
-    if ( map.size <= 0 ) {
-      map.set(object, c);
-      sum += object.price;
-
-      setProducts(Array.from(map))
-    }
-    else if (map.has(object)) {
+    if (map.has(object)) {
       let count = map.get(object);
       count+= c;
       map.set(object, count);
@@ -80,7 +84,7 @@ function App({ data, getDataProductsThunk, postOrderThunk, setSuccess, success, 
 
   return (
     <div className="App">
-      <Header name = { data.cafe.name } products = { products } rootName = { rootName } rootTable = { rootTable } sum = { sum } onRemoveProduct = { onRemoveProduct } onAddProduct = { onAddProduct }/>
+      <Header name = { data.cafe.name } products = { products } rootName = { rootName } rootTable = { rootTable } sum = { sum } onRemoveProduct = { onRemoveProduct } onAddProduct = { onAddProduct } onDeleteLast = { onDeleteLast }/>
       <Route exact path = {`/${rootName}/${rootTable}`} render = {() => <Content data = { data } rootName = { rootName } BASE_URL = { BASE_URL } rootTable = { rootTable } onAddProduct = { onAddProduct } />}/>
       <Route exact path = {`/${rootName}/${rootTable}/product/:productID`} render = {() => <Detail data = { data.cafe } BASE_URL = { BASE_URL } onAddProduct = { onAddProduct }/> }/>
       <Route exact path = {`/${rootName}/${rootTable}/order`} render = {() => <Order products = { products } success = { success } sum = { sum } rootName = { rootName } rootTable = { rootTable } postOrderThunk = { postOrderThunk } setSuccess = { setSuccess } onClearProduct = { onClearProduct }/>}/>
