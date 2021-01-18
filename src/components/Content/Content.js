@@ -62,6 +62,7 @@ const Content = ({ data, rootName, rootTable, onAddProduct, BASE_URL }) => {
                 <div className = {cls.content__products}>
                     <div className = {cls.empty}></div>
                     {data.cafe.categories.map((item, index) => {
+                        console.log(item)
                         return (
                             item.foods.length > 0 &&
                             <div className = {cls.content__width} key = { index } ref = {refs[index]}>

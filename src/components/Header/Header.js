@@ -4,7 +4,7 @@ import cls from './Header.module.css';
 import cart from '../../assets/images/cart.svg';
 import back from '../../assets/images/back.svg';
 import Cart from '../Cart/Cart';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, Route, useHistory } from 'react-router-dom';
 
 
 
@@ -24,10 +24,11 @@ const Header = ({ name, products, rootName, del, rootTable, sum, onRemoveProduct
                 <div className={cls.header__inner}>
 
                     
-                    <div className={cls.header__back} onClick = {() => history.goBack()}>
-                        <img src={back} alt="back button" />
-                    </div>
+                        <div className={cls.header__back} onClick = {() => history.goBack()}>
+                            <img src={back} alt="back button" />
+                        </div>
                     
+
                     
                     <Link to = {`/${rootName}/${rootTable}`}>
                         <div className={cls.header__name}>

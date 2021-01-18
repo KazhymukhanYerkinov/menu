@@ -27,6 +27,7 @@
 }
 .header__back img {
     width: 45px;
+    cursor: pointer;
 }
 .header__name {
     font-family: 'Montserrat', sans-serif;

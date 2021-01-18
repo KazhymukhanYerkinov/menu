@@ -40,16 +40,16 @@ function App({ data, getDataProductsThunk, postOrderThunk, setSuccess, success, 
 
   const onDeleteLast = (object) => {
     map.delete(object);
-    sum -= object.price;
+    sum -= (object.is_discounted ? object.total_price: object.price);
 
-    setProducts(Array.from(map))
+    setProducts(Array.from(map));
   }
 
   const onRemoveProduct = (object) => {
     let count = map.get(object);
     count--;
     map.set(object, count);
-    sum -= object.price
+    sum -= (object.is_discounted ? object.total_price: object.price);
 
     setProducts(Array.from(map))
     
@@ -61,13 +61,13 @@ function App({ data, getDataProductsThunk, postOrderThunk, setSuccess, success, 
       let count = map.get(object);
       count+= c;
       map.set(object, count);
-      sum += object.price;
+      sum += (object.is_discounted ? object.total_price: object.price) * c;
 
       setProducts(Array.from(map))
     }
     else {
       map.set(object, c);
-      sum += object.price;
+      sum += (object.is_discounted ? object.total_price: object.price) * c;
       
       setProducts(Array.from(map));
     }
