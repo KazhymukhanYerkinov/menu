@@ -41,18 +41,19 @@ function App({ data, getDataProductsThunk, postOrderThunk, setSuccess, success, 
   const onDeleteLast = (object) => {
     map.delete(object);
     sum -= object.price;
+
     setProducts(Array.from(map))
   }
 
-  const onRemoveProduct = (object, count) => {
-      let count = map.get(object);
-      count--;
-      map.set(object, count);
-      sum -= object.price
+  const onRemoveProduct = (object) => {
+    let count = map.get(object);
+    count--;
+    map.set(object, count);
+    sum -= object.price
 
-      setProducts(Array.from(map))
+    setProducts(Array.from(map))
     
-    
+  
   }
 
   const onAddProduct = (object, c = 1) => {

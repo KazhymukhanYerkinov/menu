@@ -11,7 +11,7 @@ const Item = ({ item, rootName, onHideCart, onRemoveProduct, onAddProduct,onRemo
             onRemoveLast(item[0]);
         }
         else {
-            onRemoveProduct(item[0], item[1]);
+            onRemoveProduct(item[0]);
         }
     }
 
