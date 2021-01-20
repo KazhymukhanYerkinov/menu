@@ -17,7 +17,7 @@ function App({ data, getDataProductsThunk, postOrderThunk, setSuccess, success, 
 
   const rootName = match.params.root;
   const rootTable = match.params.tableID;
-  const BASE_URL = 'https://qr-menu-api.herokuapp.com';
+  const BASE_URL = 'https://18.215.168.87/';
 
 
   React.useEffect(() => {

@@ -1,7 +1,7 @@
 import * as axios from 'axios';
 
 const instance = axios.create({
-    baseURL: `https://qr-menu-api.herokuapp.com/`,
+    baseURL: `https://18.215.168.87/`,
 });
 instance.interceptors.request.use(req => {
     req.headers['Content-Type'] = 'application/json';
