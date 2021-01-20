@@ -11,7 +11,7 @@ import Delete from './Delete/Delete';
 
 const Cart = ({ products, onHideCart, rootName,rootTable, sum, onRemoveProduct, onAddProduct, onDeleteLast }) => {
     const sale = 15;
-    const obs = sum /100 * sale;
+    const obs = Math.ceil(sum /100 * sale);
     const [ lastItem, setLastItem ] = React.useState(null);
 
     const onRemoveLast = (object) => {

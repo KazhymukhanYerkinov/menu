@@ -14,17 +14,14 @@ let sum = 0;
 function App({ data, getDataProductsThunk, postOrderThunk, setSuccess, success, match}) {
 
   const [ products, setProducts ] = React.useState([]);
-  const [ del, setDel ] = React.useState(null);
 
   const rootName = match.params.root;
   const rootTable = match.params.tableID;
   const BASE_URL = 'https://qr-menu-api.herokuapp.com';
 
-  console.log("RENDER APP")
 
   React.useEffect(() => {
     getDataProductsThunk(rootName)
-    console.log("RENDER AXIOS")
   },[])
 
   if (data === null) {

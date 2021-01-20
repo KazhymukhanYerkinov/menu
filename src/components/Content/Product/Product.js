@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const Product = ({ foods, rootName, onAddProduct, rootTable, BASE_URL }) => {
     
-    console.log("RENDER PRODUCT")
+    
 
     return (
         <div className = {cls.base__block}>  
@@ -18,7 +18,9 @@ const Product = ({ foods, rootName, onAddProduct, rootTable, BASE_URL }) => {
                         <div className={cls.product} key = { index }>
                             <div className={cls.product__inner}>
                                 <Link to={`/${rootName}/${rootTable}/product/${item.id}`} className = {cls.product__link}>
-                                    <img src={!item.image ? noimage:`${BASE_URL}${item.image}` } alt="Product photos" className={cls.product__image} />
+                                    <div className = {cls.image__block}>
+                                        <img src={!item.image ? noimage:`${BASE_URL}${item.image}` } alt="Product photos" className={cls.product__image} />
+                                    </div>
                                     <div>
                                         <div className={cls.product__name}> { item.name } </div>
                                         <div className={cls.product__price}> {item.is_discounted ? <span> {item.total_price} KZT  <span className = {cls.del__text}> { item.price } KZT</span></span>: <span> {item.price} KZT </span>} </div>

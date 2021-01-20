@@ -1,4 +1,5 @@
 import React from 'react';
+import smoothscroll from "smoothscroll-polyfill";
 
 import Categories from './Category/Category';
 
@@ -7,11 +8,12 @@ import Product from './Product/Product';
 
 const list = [];
 
+
 const Content = ({ data, rootName, rootTable, onAddProduct, BASE_URL }) => {
-
-    console.log("RENDER CONTENT")
+    smoothscroll.polyfill();
+    
     const [ activeCategory, setActiveCategory ] = React.useState(0);
-
+    
     for (let i = 0; i < data.cafe.categories.length; i++) {
         list.push({id: i, name: `section_${i}`});
     }
@@ -62,7 +64,6 @@ const Content = ({ data, rootName, rootTable, onAddProduct, BASE_URL }) => {
                 <div className = {cls.content__products}>
                     <div className = {cls.empty}></div>
                     {data.cafe.categories.map((item, index) => {
-                        console.log(item)
                         return (
                             item.foods.length > 0 &&
                             <div className = {cls.content__width} key = { index } ref = {refs[index]}>
