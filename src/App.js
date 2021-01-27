@@ -17,7 +17,7 @@ function App({ data, getDataProductsThunk, postOrderThunk, setSuccess, success, 
 
   const rootName = match.params.root;
   const rootTable = match.params.tableID;
-  const BASE_URL = 'https://18.233.171.47/';
+  const BASE_URL = 'https://q-menu.ru';
 
 
   React.useEffect(() => {
