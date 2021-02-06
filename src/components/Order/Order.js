@@ -46,7 +46,7 @@ const OrderForm = ({ sum, obs, handleSubmit }) => {
                 </div>
             </div>
 
-            <button className={cls.order__button}> Отправить </button>
+            <button className={cls.order__button} type = 'submit'> Отправить </button>
         </form>
     )
 }

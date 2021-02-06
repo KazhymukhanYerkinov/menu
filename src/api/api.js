@@ -1,7 +1,7 @@
 import * as axios from 'axios';
 
 const instance = axios.create({
-    baseURL: `https://q-menu.ru/`,
+    baseURL: `https://q-menushka.herokuapp.com/`,
 });
 instance.interceptors.request.use(req => {
     req.headers['Content-Type'] = 'application/json';
@@ -22,7 +22,6 @@ export const dataAPI = {
             console.log(response)
             return response;
         })
-
     }
 }
 

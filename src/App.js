@@ -17,7 +17,7 @@ function App({ data, getDataProductsThunk, postOrderThunk, setSuccess, success, 
 
   const rootName = match.params.root;
   const rootTable = match.params.tableID;
-  const BASE_URL = 'https://q-menu.ru';
+  const BASE_URL = 'https://q-menushka.herokuapp.com';
 
 
   React.useEffect(() => {
@@ -32,6 +32,7 @@ function App({ data, getDataProductsThunk, postOrderThunk, setSuccess, success, 
 
   const onClearProduct = () => {
     map = new Map();
+    sum = 0;
     setProducts([]);
   }
 

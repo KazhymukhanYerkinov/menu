@@ -47,6 +47,7 @@
 
 .product__image {
     display: block;
+    width: 80%;
 
     position: absolute;
     margin: auto;
